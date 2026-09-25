@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../theme/app_colors.dart';
 
 class QuizTimerWidget extends StatelessWidget {
   final int secondsRemaining;
@@ -14,11 +15,11 @@ class QuizTimerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Color timerColor;
     if (secondsRemaining > 10) {
-      timerColor = const Color(0xFF00695C);
+      timerColor = AppColors.primaryTeal;
     } else if (secondsRemaining > 5) {
-      timerColor = const Color(0xFFF57C00);
+      timerColor = const Color(0xFFF59E0B);
     } else {
-      timerColor = const Color(0xFFD32F2F);
+      timerColor = AppColors.incorrectRedDark;
     }
 
     final double progress = totalSeconds > 0
