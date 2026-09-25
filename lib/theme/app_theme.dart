@@ -16,6 +16,7 @@ class AppTheme {
         seedColor: AppColors.primaryTeal,
         primary: AppColors.primaryTeal,
         secondary: AppColors.accentBlue,
+        tertiary: AppColors.accentIndigo,
         surface: AppColors.surfaceWhite,
         brightness: Brightness.light,
       ),
@@ -51,11 +52,20 @@ class AppTheme {
           color: AppColors.textSecondary,
         ),
       ),
+      cardTheme: CardTheme(
+        color: AppColors.surfaceWhite,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+          side: const BorderSide(color: AppColors.surfaceBorder, width: 1),
+        ),
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryTeal,
           foregroundColor: Colors.white,
           elevation: 0,
+          shadowColor: AppColors.primaryTeal.withValues(alpha: 0.3),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
@@ -73,6 +83,10 @@ class AppTheme {
         centerTitle: true,
         scrolledUnderElevation: 0,
         iconTheme: IconThemeData(color: AppColors.textDark),
+      ),
+      dividerTheme: const DividerThemeData(
+        color: AppColors.surfaceBorder,
+        thickness: 1,
       ),
     );
   }
