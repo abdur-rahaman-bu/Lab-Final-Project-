@@ -25,7 +25,7 @@ class AnswerOptionTile extends StatelessWidget {
     Color borderColor = AppColors.optionDefaultBorder;
     Widget trailingIcon = const Icon(
       Icons.radio_button_unchecked,
-      color: Color(0xFF2D3748),
+      color: AppColors.textMuted,
       size: 24,
     );
 
@@ -33,27 +33,27 @@ class AnswerOptionTile extends StatelessWidget {
       if (isSelected) {
         if (isCorrect) {
           backgroundColor = AppColors.correctGreenBg;
-          borderColor = const Color(0xFF81C784);
+          borderColor = AppColors.correctGreenDark.withValues(alpha: 0.6);
           trailingIcon = const Icon(
-            Icons.check_circle,
-            color: Color(0xFF004D40),
+            Icons.check_circle_rounded,
+            color: AppColors.correctGreenDark,
             size: 24,
           );
         } else {
           backgroundColor = AppColors.incorrectRedBg;
-          borderColor = const Color(0xFFE57373);
+          borderColor = AppColors.incorrectRedDark.withValues(alpha: 0.6);
           trailingIcon = const Icon(
-            Icons.cancel,
-            color: Color(0xFFD32F2F),
+            Icons.cancel_rounded,
+            color: AppColors.incorrectRedDark,
             size: 24,
           );
         }
       } else if (isActualCorrect) {
-        backgroundColor = const Color(0xFFE8F5E9);
-        borderColor = const Color(0xFF81C784);
+        backgroundColor = AppColors.correctGreenLight;
+        borderColor = AppColors.correctGreenDark.withValues(alpha: 0.5);
         trailingIcon = const Icon(
-          Icons.check_circle_outline,
-          color: Color(0xFF2E7D32),
+          Icons.check_circle_outline_rounded,
+          color: AppColors.correctGreenDark,
           size: 24,
         );
       }
