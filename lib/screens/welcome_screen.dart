@@ -71,20 +71,27 @@ class WelcomeScreen extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.primaryTeal,
                             foregroundColor: Colors.white,
-                            elevation: 2,
-                            shadowColor: AppColors.primaryTeal.withValues(alpha: 0.4),
+                            elevation: 3,
+                            shadowColor: AppColors.primaryTeal.withValues(alpha: 0.35),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16),
                             ),
                           ),
-                          child: const Text(
-                            'GET STARTED',
-                            style: TextStyle(
-                              fontFamily: 'Outfit',
-                              fontSize: 17,
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: 1.0,
-                            ),
+                          child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'GET STARTED',
+                                style: TextStyle(
+                                  fontFamily: 'Outfit',
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 1.0,
+                                ),
+                              ),
+                              SizedBox(width: 8),
+                              Icon(Icons.arrow_forward_rounded, size: 20),
+                            ],
                           ),
                         ),
                       ),
