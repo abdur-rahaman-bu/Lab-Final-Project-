@@ -76,7 +76,7 @@ class _CategoryCardState extends State<CategoryCard> {
                         child: Icon(
                           widget.category.icon,
                           size: 42,
-                          color: AppColors.textDark.withValues(alpha: 0.85),
+                          color: widget.category.getIconColor(widget.index),
                         ),
                       ),
                     ),
