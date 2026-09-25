@@ -68,4 +68,23 @@ class TriviaCategory {
   Color getCardColor(int index) {
     return AppColors.getPastelColor(index);
   }
+
+  /// Complementary accent color for icons to ensure high contrast against pastels
+  Color getIconColor(int index) {
+    const iconColors = [
+      Color(0xFF4338CA), // Indigo
+      Color(0xFF047857), // Emerald
+      Color(0xFFB45309), // Amber
+      Color(0xFF7E22CE), // Purple
+      Color(0xFFBE123C), // Rose
+      Color(0xFFC2410C), // Orange
+      Color(0xFF0369A1), // Sky
+      Color(0xFFBE185D), // Pink
+      Color(0xFF6D28D9), // Violet
+      Color(0xFF065F46), // Sage
+      Color(0xFF0F766E), // Teal
+      Color(0xFF334155), // Slate
+    ];
+    return iconColors[index % iconColors.length];
+  }
 }
