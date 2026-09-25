@@ -24,6 +24,7 @@ class _CategoryCardState extends State<CategoryCard> {
   @override
   Widget build(BuildContext context) {
     final bgColor = widget.category.getCardColor(widget.index);
+    final imagePath = widget.category.categoryImage;
 
     return AnimatedScale(
       scale: _isPressed ? 0.96 : 1.0,
@@ -46,61 +47,123 @@ class _CategoryCardState extends State<CategoryCard> {
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.04),
-                    blurRadius: 8,
+                    color: Colors.black.withValues(alpha: 0.06),
+                    blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
                 ],
               ),
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const SizedBox(height: 4),
-                  // Visual Icon / Badge
-                  Expanded(
-                    child: Center(
-                      child: Container(
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha: 0.65),
-                          shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withValues(alpha: 0.03),
-                              blurRadius: 6,
-                              offset: const Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: Icon(
-                          widget.category.icon,
-                          size: 42,
-                          color: widget.category.getIconColor(widget.index),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  // Category Label
-                  Text(
-                    widget.category.displayName,
-                    textAlign: TextAlign.center,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontFamily: 'Outfit',
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.textDark,
-                      height: 1.2,
-                    ),
-                  ),
+              clipBehavior: Clip.antiAlias,
+              child: imagePath != null
+                  ? _buildImageCard(imagePath)
+                  : _buildIconCard(bgColor),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// Card layout with PNG image as prominent background
+  Widget _buildImageCard(String imagePath) {
+    return Stack(
+      children: [
+        // Category image – fills the card
+        Positioned.fill(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 40),
+            child: Image.asset(
+              imagePath,
+              fit: BoxFit.contain,
+            ),
+          ),
+        ),
+        // Bottom label with frosted glass effect
+        Positioned(
+          left: 0,
+          right: 0,
+          bottom: 0,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.white.withValues(alpha: 0.0),
+                  Colors.white.withValues(alpha: 0.85),
+                  Colors.white.withValues(alpha: 0.95),
                 ],
+                stops: const [0.0, 0.3, 1.0],
+              ),
+            ),
+            child: Text(
+              widget.category.displayName,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                fontFamily: 'Outfit',
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: AppColors.textDark,
+                height: 1.2,
               ),
             ),
           ),
         ),
+      ],
+    );
+  }
+
+  /// Fallback card layout with icon (for categories without a PNG)
+  Widget _buildIconCard(Color bgColor) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const SizedBox(height: 4),
+          // Visual Icon / Badge
+          Expanded(
+            child: Center(
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.65),
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.03),
+                      blurRadius: 6,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Icon(
+                  widget.category.icon,
+                  size: 42,
+                  color: widget.category.getIconColor(widget.index),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 12),
+          // Category Label
+          Text(
+            widget.category.displayName,
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              fontFamily: 'Outfit',
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: AppColors.textDark,
+              height: 1.2,
+            ),
+          ),
+        ],
       ),
     );
   }

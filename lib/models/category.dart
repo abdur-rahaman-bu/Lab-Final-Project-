@@ -64,6 +64,17 @@ class TriviaCategory {
     return Icons.lightbulb_outline_rounded;
   }
 
+  /// PNG asset path for this category (null if no image available)
+  String? get categoryImage {
+    final lower = name.toLowerCase();
+    if (lower.contains('book')) return 'assets/images/book.png';
+    if (lower.contains('film')) return 'assets/images/film.png';
+    if (lower.contains('music') && !lower.contains('theatre')) return 'assets/images/music.png';
+    if (lower.contains('television') || lower.contains('tv')) return 'assets/images/television.png';
+    if (lower.contains('general knowledge')) return 'assets/images/general_knowledge.png';
+    return null;
+  }
+
   /// Card pastel color for this category
   Color getCardColor(int index) {
     return AppColors.getPastelColor(index);
