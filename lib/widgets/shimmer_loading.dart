@@ -66,7 +66,7 @@ class CategorySkeletonGrid extends StatelessWidget {
         itemBuilder: (context, index) {
           return Container(
             decoration: BoxDecoration(
-              color: Colors.grey.shade200,
+              color: const Color(0xFFF1F5F9),
               borderRadius: BorderRadius.circular(20),
             ),
             padding: const EdgeInsets.all(16),
@@ -76,8 +76,8 @@ class CategorySkeletonGrid extends StatelessWidget {
                 Container(
                   width: 60,
                   height: 60,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
+                  decoration: const BoxDecoration(
+                    color: Color(0xFFE2E8F0),
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -86,7 +86,7 @@ class CategorySkeletonGrid extends StatelessWidget {
                   height: 14,
                   width: 90,
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
+                    color: const Color(0xFFE2E8F0),
                     borderRadius: BorderRadius.circular(6),
                   ),
                 ),
