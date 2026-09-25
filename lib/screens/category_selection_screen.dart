@@ -52,8 +52,8 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
+                          children: [
+                            const Text(
                               'Quizzical',
                               style: TextStyle(
                                 fontFamily: 'Outfit',
@@ -63,17 +63,40 @@ class _CategorySelectionScreenState extends State<CategorySelectionScreen> {
                                 letterSpacing: -0.5,
                               ),
                             ),
-                            SizedBox(height: 6),
-                            Text(
-                              'choose a category to focus on:',
-                              style: TextStyle(
-                                fontFamily: 'Outfit',
-                                fontSize: 18,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.textSecondary,
-                              ),
+                            const SizedBox(height: 6),
+                            Row(
+                              children: [
+                                const Text(
+                                  'Choose a category to focus on',
+                                  style: TextStyle(
+                                    fontFamily: 'Outfit',
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.textSecondary,
+                                  ),
+                                ),
+                                if (quizProvider.categories.isNotEmpty) ...[
+                                  const SizedBox(width: 8),
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                                    decoration: BoxDecoration(
+                                      color: AppColors.primaryTeal.withValues(alpha: 0.12),
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Text(
+                                      '${quizProvider.categories.length}',
+                                      style: const TextStyle(
+                                        fontFamily: 'Outfit',
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w700,
+                                        color: AppColors.primaryTeal,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ],
                             ),
-                            SizedBox(height: 16),
+                            const SizedBox(height: 16),
                           ],
                         ),
                       ),
