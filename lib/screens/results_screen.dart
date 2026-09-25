@@ -520,14 +520,21 @@ class _ResultsScreenState extends State<ResultsScreen>
                               borderRadius: BorderRadius.circular(16),
                             ),
                           ),
-                          child: const Text(
-                            'PLAY AGAIN',
-                            style: TextStyle(
-                              fontFamily: 'Outfit',
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 1.0,
-                            ),
+                          child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.replay_rounded, size: 20),
+                              SizedBox(width: 8),
+                              Text(
+                                'PLAY AGAIN',
+                                style: TextStyle(
+                                  fontFamily: 'Outfit',
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 1.0,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
