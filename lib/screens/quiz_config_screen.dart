@@ -332,10 +332,10 @@ class _QuizConfigScreenState extends State<QuizConfigScreen> {
                         child: ElevatedButton(
                           onPressed: quizProvider.isLoadingQuestions ? null : _onStartPressed,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            foregroundColor: AppColors.primaryTeal,
-                            side: const BorderSide(color: AppColors.primaryTeal, width: 1.6),
-                            elevation: 0,
+                            backgroundColor: AppColors.primaryTeal,
+                            foregroundColor: Colors.white,
+                            elevation: 2,
+                            shadowColor: AppColors.primaryTeal.withValues(alpha: 0.35),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16),
                             ),
@@ -346,17 +346,17 @@ class _QuizConfigScreenState extends State<QuizConfigScreen> {
                                   width: 24,
                                   child: CircularProgressIndicator(
                                     strokeWidth: 2.5,
-                                    valueColor: AlwaysStoppedAnimation<Color>(AppColors.primaryTeal),
+                                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                                   ),
                                 )
                               : const Text(
-                                  'START',
+                                  'START QUIZ',
                                   style: TextStyle(
                                     fontFamily: 'Outfit',
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                     letterSpacing: 1.2,
-                                    color: AppColors.primaryTeal,
+                                    color: Colors.white,
                                   ),
                                 ),
                         ),
